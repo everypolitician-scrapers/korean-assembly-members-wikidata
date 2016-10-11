@@ -19,4 +19,3 @@ names_20 = EveryPolitician::Wikidata.wikipedia_xpath(
 )
 
 EveryPolitician::Wikidata.scrape_wikidata(names: { ko: names_19 | names_20 }, output: false)
-warn EveryPolitician::Wikidata.notify_rebuilder
