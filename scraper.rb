@@ -18,5 +18,5 @@ names_20 = EveryPolitician::Wikidata.wikipedia_xpath(
   xpath: '//p//a[not(@class="new")]/@title',
 )
 
-EveryPolitician::Wikidata.scrape_wikidata(names: { ko: names_19 + names_20 }, output: false)
+EveryPolitician::Wikidata.scrape_wikidata(names: { ko: names_19 | names_20 }, output: false)
 warn EveryPolitician::Wikidata.notify_rebuilder
