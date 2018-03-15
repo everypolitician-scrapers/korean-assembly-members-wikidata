@@ -21,5 +21,13 @@ site_20 = EveryPolitician::Wikidata.wikipedia_xpath(
 )
 category_20 = WikiData::Category.new('분류:대한민국의 제20대 국회의원', 'ko').member_titles
 
+# Members of the 19th/20th Assembly
+sparq = <<EOQ
+  SELECT DISTINCT ?item WHERE {
+    VALUES ?term { wd:Q12592166 wd:Q22971549 }
+    ?item p:P39 [ ps:P39 wd:Q14850694 ; pq:P2937 ?term ]
+  }
+EOQ
+ids = EveryPolitician::Wikidata.sparql(sparq)
 
-EveryPolitician::Wikidata.scrape_wikidata(names: { ko: site_19 | category_19 | site_20 | category_20 })
+EveryPolitician::Wikidata.scrape_wikidata(ids: ids, names: { ko: site_19 | category_19 | site_20 | category_20 })
